@@ -19,16 +19,13 @@ class IPropertyRegistry(ABC):
             self._add_new(name, description)
 
     @abstractmethod
-    def _add_new(self, name: str, description: dict):
-        ...
+    def _add_new(self, name: str, description: dict): ...
 
     @abstractmethod
-    def _update_existent(self: str, name, description: dict):
-        ...
+    def _update_existent(self: str, name, description: dict): ...
 
     @abstractmethod
-    def iter_names(self):
-        ...
+    def iter_names(self): ...
 
     @abstractmethod
     def register_custom(
@@ -39,8 +36,7 @@ class IPropertyRegistry(ABC):
         default_value=None,
         help=None,
         **editor_params,
-    ):
-        ...
+    ): ...
 
 
 class PropertyRegistryDummy(IPropertyRegistry):
@@ -134,11 +130,35 @@ class PropertyRegistryBase(IPropertyRegistry):
         """Copy property definition from one builder to another."""
         if pname not in self.properties:
             raise RuntimeError(f"Property {pname} not registered.")
-        elif from_builder_id not in self.properties[pname]:
-            raise RuntimeError(f"Builder ID {from_builder_id} not registered.")
+        from_definition = self.find_definition_for(pname, from_builder_id)
+        if from_definition:
+            new_definition = {to_builder_id: from_definition.copy()}
+            self._update_existent(pname, new_definition)
         else:
-            description = self.properties[pname][from_builder_id].copy()
-            self.properties[pname][to_builder_id] = description
+            logger.info(
+                "Builder %s has no definition for %s.", from_builder_id, pname
+            )
+
+    def find_definition_for(self, pname: str, builder_uid: str) -> dict:
+        """Search for specific definition of pname added by builder_uid."""
+
+        definition = self.properties[pname]
+        specific = {}
+        # Get editor parameters for a specific builder_uid
+        # First, search for exact match
+        for key in definition:
+            if key == builder_uid:
+                specific = definition[key]
+                break
+        if not specific:
+            # Search for partial match
+            for key in definition:
+                if key.endswith(".*"):
+                    needle = key[:-2]
+                    if needle in builder_uid:
+                        specific = definition[key]
+                        break
+        return specific
 
 
 if "PYGUBU_DESIGNER_RUNNING" in os.environ:
