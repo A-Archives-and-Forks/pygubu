@@ -1,6 +1,15 @@
 History
 =======
 
+Changes for version 0.41
+
+  * property_registry: Allow to copy a property when builder_id is using wildcard. fixes #308
+  * ttkstdwidgets: add builder for ttk::toggleswitch from tk 9.1
+  * pygubu.widgets: add fallback for ttk::toggleswitch from tk 9.1
+  * ttkstdwidgets: add missing tk 9 properties to button and label
+  * ttkstdwidgets: fix code generation for ttk.OptionMenu.  refs alejandroautalan/pygubu-designer#323
+  * Customtkinter: Major plugin internal code cleaning.
+
 Changes for version 0.40.1
 
   * Fix code generation for AccordionFrame widget.
