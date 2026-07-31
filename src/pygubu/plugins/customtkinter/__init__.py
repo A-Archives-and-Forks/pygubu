@@ -1,35 +1,35 @@
 import importlib
 from pygubu.i18n import _
 from pygubu.api.v1 import IPluginBase, IBuilderLoaderPlugin, IDesignerPlugin
-
-
-_designer_tab_label = _("CustomTkinter")
-_plugin_uid = "customtkinter"
+from ._config import namespace, nsctk
 
 
 class CTkBuilderLoader(IBuilderLoaderPlugin, IPluginBase):
     module_map = {
         "pygubu.plugins.customtkinter.windows": (
-            f"{_plugin_uid}.CTkToplevel",
-            f"{_plugin_uid}.CTk",
+            nsctk.CTkToplevel,
+            nsctk.CTk,
         ),
         "pygubu.plugins.customtkinter.widgets": (
-            f"{_plugin_uid}.CTkFrame",
-            f"{_plugin_uid}.CTkLabel",
-            f"{_plugin_uid}.CTkProgressBar",
-            f"{_plugin_uid}.CTkButton",
-            f"{_plugin_uid}.CTkSlider",
-            f"{_plugin_uid}.CTkEntry",
-            f"{_plugin_uid}.CTkOptionMenu",
-            f"{_plugin_uid}.CTkComboBox",
-            f"{_plugin_uid}.CTkCheckBox",
-            f"{_plugin_uid}.CTkRadioButton",
-            f"{_plugin_uid}.CTkSwitch",
-            f"{_plugin_uid}.CTkTextbox",
-            f"{_plugin_uid}.CTkCanvas",
-            f"{_plugin_uid}.CTkScrollbar",
-            f"{_plugin_uid}.CTkTabview",
-            f"{_plugin_uid}.CTkScrollableFrame",
+            nsctk.CTkFrame,
+            nsctk.CTkLabel,
+            nsctk.CTkProgressBar,
+            nsctk.CTkButton,
+            nsctk.CTkSlider,
+            nsctk.CTkEntry,
+            nsctk.CTkOptionMenu,
+            nsctk.CTkComboBox,
+            nsctk.CTkCheckBox,
+            nsctk.CTkRadioButton,
+            nsctk.CTkSwitch,
+            nsctk.CTkTextbox,
+            nsctk.CTkCanvas,
+            nsctk.CTkScrollbar,
+            nsctk.CTkScrollableFrame,
+        ),
+        "pygubu.plugins.customtkinter.tabview": (nsctk.CTkTabview,),
+        "pygubu.plugins.customtkinter.scrollableframe": (
+            nsctk.CTkScrollableFrame,
         ),
     }
 

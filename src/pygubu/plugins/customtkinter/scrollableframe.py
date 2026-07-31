@@ -4,8 +4,8 @@ from pygubu.api.v1 import (
     register_custom_property,
 )
 from pygubu.i18n import _
-from ..customtkinter import _designer_tab_label, _plugin_uid
-from .ctkbase import CTkBaseMixin, GCONTAINER
+from ._config import _designer_tabs, nsctk, GCONTAINER
+from .ctkbase import CTkBaseMixin
 
 from customtkinter import CTkScrollableFrame
 
@@ -37,39 +37,10 @@ class CTkScrollableFrameBO(CTkBaseMixin, BuilderObject):
     ro_properties = ("orientation",)
 
 
-_builder_uid = f"{_plugin_uid}.CTkScrollableFrame"
 register_widget(
-    _builder_uid,
+    nsctk.CTkScrollableFrame,
     CTkScrollableFrameBO,
     "CTkScrollableFrame",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GCONTAINER,
-)
-
-register_custom_property(
-    _builder_uid,
-    "label_anchor",
-    "choice",
-    values=(
-        "",
-        "n",
-        "ne",
-        "nw",
-        "e",
-        "w",
-        "s",
-        "se",
-        "sw",
-        "center",
-    ),
-    state="readonly",
-)
-
-register_custom_property(
-    _builder_uid,
-    "orientation",
-    "choice",
-    values=("vertical", "horizontal"),
-    default_value="vertical",
-    state="readonly",
 )

@@ -5,19 +5,13 @@ import pygubu.plugins.customtkinter.scrollableframe
 from pygubu.api.v1 import (
     BuilderObject,
     register_widget,
-    register_custom_property,
 )
 from pygubu.i18n import _
 from pygubu.utils.datatrans import ListDTO
 from pygubu.plugins.tk.tkstdwidgets import TKCanvas as TKCanvasBO
 
-from ..customtkinter import _designer_tab_label, _plugin_uid
-from .ctkbase import (
-    CTkBaseMixin,
-    GCONTAINER,
-    GDISPLAY,
-    GINPUT,
-)
+from ._config import nsctk, GCONTAINER, GDISPLAY, GINPUT, _designer_tabs
+from .ctkbase import CTkBaseMixin
 
 
 class CTkFrameBO(CTkBaseMixin, BuilderObject):
@@ -36,12 +30,11 @@ class CTkFrameBO(CTkBaseMixin, BuilderObject):
     )
 
 
-_builder_uid = f"{_plugin_uid}.CTkFrame"
 register_widget(
-    _builder_uid,
+    nsctk.CTkFrame,
     CTkFrameBO,
     "CTkFrame",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GCONTAINER,
 )
 
@@ -75,12 +68,11 @@ class CTkLabelBO(CTkBaseMixin, BuilderObject):
     )
 
 
-_builder_uid = f"{_plugin_uid}.CTkLabel"
 register_widget(
-    _builder_uid,
+    nsctk.CTkLabel,
     CTkLabelBO,
     "CTkLabel",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GDISPLAY,
 )
 
@@ -107,21 +99,12 @@ class CTkProgressBarBO(CTkBaseMixin, BuilderObject):
     ro_properties = ("orientation",)
 
 
-_builder_uid = f"{_plugin_uid}.CTkProgressBar"
 register_widget(
-    _builder_uid,
+    nsctk.CTkProgressBar,
     CTkProgressBarBO,
     "CTkProgressBar",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GDISPLAY,
-)
-
-register_custom_property(
-    _builder_uid,
-    "variable",
-    "tkvarentry",
-    type_choices=("int", "double"),
-    type_default="int",
 )
 
 
@@ -158,12 +141,11 @@ class CTkButtonBO(CTkBaseMixin, BuilderObject):
     ro_properties = ("hover",)
 
 
-_builder_uid = f"{_plugin_uid}.CTkButton"
 register_widget(
-    _builder_uid,
+    nsctk.CTkButton,
     CTkButtonBO,
     "CTkButton",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
 )
 
@@ -203,21 +185,12 @@ class CTkSliderBO(CTkBaseMixin, BuilderObject):
         return ("value",)
 
 
-_builder_uid = f"{_plugin_uid}.CTkSlider"
 register_widget(
-    _builder_uid,
+    nsctk.CTkSlider,
     CTkSliderBO,
     "CTkSlider",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
-)
-
-register_custom_property(
-    _builder_uid,
-    "variable",
-    "tkvarentry",
-    type_choices=("int", "double"),
-    type_default="int",
 )
 
 
@@ -225,7 +198,6 @@ class CTkEntryBO(CTkBaseMixin, BuilderObject):
     class_ = ctk.CTkEntry
     allow_bindings = False
     properties = (
-        "borderwidth",
         "cursor",
         "exportselection",
         "font",
@@ -262,7 +234,8 @@ class CTkEntryBO(CTkBaseMixin, BuilderObject):
     def _set_property(self, target_widget, pname, value):
         if pname == "text":
             target_widget.delete(0, "end")
-            target_widget.insert(0, value)
+            if value:
+                target_widget.insert(0, value)
         else:
             super()._set_property(target_widget, pname, value)
 
@@ -278,12 +251,11 @@ class CTkEntryBO(CTkBaseMixin, BuilderObject):
             super()._code_set_property(targetid, pname, value, code_bag)
 
 
-_builder_uid = f"{_plugin_uid}.CTkEntry"
 register_widget(
-    _builder_uid,
+    nsctk.CTkEntry,
     CTkEntryBO,
     "CTkEntry",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
 )
 
@@ -331,26 +303,12 @@ class CTkOptionMenuBO(CTkBaseMixin, BuilderObject):
         return super()._code_process_property_value(targetid, pname, value)
 
 
-_builder_uid = f"{_plugin_uid}.CTkOptionMenu"
-_ctk_values_help = _(
-    "Specifies the list of values to display. "
-    "In code you can pass any iterable. "
-    'In Designer, a json like list: ["item1", "item2"]'
-)
 register_widget(
-    _builder_uid,
+    nsctk.CTkOptionMenu,
     CTkOptionMenuBO,
     "CTkOptionMenu",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
-)
-register_custom_property(_builder_uid, "values", "entry", help=_ctk_values_help)
-register_custom_property(
-    _builder_uid,
-    "state",
-    "choice",
-    values=("", "normal", "disabled", "readonly"),
-    state="readonly",
 )
 
 
@@ -397,21 +355,12 @@ class CTkComboBoxBO(CTkBaseMixin, BuilderObject):
         return super()._code_process_property_value(targetid, pname, value)
 
 
-_builder_uid = f"{_plugin_uid}.CTkComboBox"
 register_widget(
-    _builder_uid,
+    nsctk.CTkComboBox,
     CTkComboBoxBO,
     "CTkComboBox",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
-)
-register_custom_property(_builder_uid, "values", "entry", help=_ctk_values_help)
-register_custom_property(
-    _builder_uid,
-    "state",
-    "choice",
-    values=("", "normal", "disabled", "readonly"),
-    state="readonly",
 )
 
 
@@ -446,12 +395,11 @@ class CTkCheckBoxBO(CTkBaseMixin, BuilderObject):
     ro_properties = ("hover", "onvalue", "offvalue")
 
 
-_builder_uid = f"{_plugin_uid}.CTkCheckBox"
 register_widget(
-    _builder_uid,
+    nsctk.CTkCheckBox,
     CTkCheckBoxBO,
     "CTkCheckBox",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
 )
 
@@ -486,12 +434,11 @@ class CTkRadioButtonBO(CTkBaseMixin, BuilderObject):
     ro_properties = ("hover", "value")
 
 
-_builder_uid = f"{_plugin_uid}.CTkRadioButton"
 register_widget(
-    _builder_uid,
+    nsctk.CTkRadioButton,
     CTkRadioButtonBO,
     "CTkRadioButton",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
 )
 
@@ -535,12 +482,11 @@ class CTkSwitchBO(CTkBaseMixin, BuilderObject):
     )
 
 
-_builder_uid = f"{_plugin_uid}.CTkSwitch"
 register_widget(
-    _builder_uid,
+    nsctk.CTkSwitch,
     CTkSwitchBO,
     "CTkSwitch",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
 )
 
@@ -591,10 +537,14 @@ class CTkTextboxBO(CTkBaseMixin, BuilderObject):
             state = target_widget.cget("state")
             if state == ctk.DISABLED:
                 target_widget.configure(state=ctk.NORMAL)
-                target_widget.insert("0.0", value)
+                target_widget.delete("0.0", "end")
+                if value:
+                    target_widget.insert("0.0", value)
                 target_widget.configure(state=ctk.DISABLED)
             else:
-                target_widget.insert("0.0", value)
+                target_widget.delete("0.0", "end")
+                if value:
+                    target_widget.insert("0.0", value)
         else:
             super()._set_property(target_widget, pname, value)
 
@@ -611,32 +561,29 @@ class CTkTextboxBO(CTkBaseMixin, BuilderObject):
                 lines.extend(
                     (
                         f'{targetid}.configure(state="normal")',
+                        f'{targetid}.delete("0.0", "end")',
                         f'{targetid}.insert("0.0", _text_)',
                         f'{targetid}.configure(state="disabled")',
                     )
                 )
             else:
-                lines.append(f'{targetid}.insert("0.0", _text_)')
+                lines.extend(
+                    (
+                        f'{targetid}.delete("0.0", "end")',
+                        f'{targetid}.insert("0.0", _text_)',
+                    )
+                )
             code_bag[pname] = lines
         else:
             super()._code_set_property(targetid, pname, value, code_bag)
 
 
-_builder_uid = f"{_plugin_uid}.CTkTextbox"
 register_widget(
-    _builder_uid,
+    nsctk.CTkTextbox,
     CTkTextboxBO,
     "CTkTextbox",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
-)
-
-register_custom_property(
-    _builder_uid,
-    "wrap",
-    "choice",
-    values=("", ctk.CHAR, ctk.WORD, ctk.NONE),
-    state="readonly",
 )
 
 
@@ -662,27 +609,12 @@ class CTkScrollbarBO(CTkBaseMixin, BuilderObject):
     command_properties = ("command",)
 
 
-_builder_uid = f"{_plugin_uid}.CTkScrollbar"
 register_widget(
-    _builder_uid,
+    nsctk.CTkScrollbar,
     CTkScrollbarBO,
     "CTkScrollbar",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
-)
-
-register_custom_property(
-    _builder_uid,
-    "orientation",
-    "choice",
-    values=("vertical", "horizontal"),
-    state="readonly",
-    default_value="vertical",
-)
-register_custom_property(
-    _builder_uid,
-    "command",
-    "scrollcommandentry",
 )
 
 
@@ -727,27 +659,23 @@ class CTkSegmentedButtonBO(CTkBaseMixin, BuilderObject):
         return super()._code_process_property_value(targetid, pname, value)
 
 
-_builder_uid = f"{_plugin_uid}.CTkSegmentedButton"
 register_widget(
-    _builder_uid,
+    nsctk.CTkSegmentedButton,
     CTkSegmentedButtonBO,
     "CTkSegmentedButton",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GINPUT,
 )
-
-register_custom_property(_builder_uid, "values", "entry", help=_ctk_values_help)
 
 
 class CTkCanvasBO(TKCanvasBO):
     class_ = ctk.CTkCanvas
 
 
-_builder_uid = f"{_plugin_uid}.CTkCanvas"
 register_widget(
-    _builder_uid,
+    nsctk.CTkCanvas,
     CTkCanvasBO,
     "CTkCanvas",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GDISPLAY,
 )

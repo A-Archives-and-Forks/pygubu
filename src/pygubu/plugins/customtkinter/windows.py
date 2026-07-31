@@ -1,4 +1,4 @@
-from pygubu.api.v1 import register_widget, register_custom_property
+from pygubu.api.v1 import register_widget
 from pygubu.i18n import _
 from pygubu.plugins.tk.tkstdwidgets import TKToplevel as TKToplevelBO
 from pygubu.plugins.tk.tkstdwidgets import TKRootBO
@@ -9,7 +9,7 @@ from customtkinter import (
     set_default_color_theme,
 )
 
-from ..customtkinter import _designer_tab_label, _plugin_uid
+from ._config import _designer_tabs, nsctk, GROOT
 from .ctkbase import CTkBaseMixin
 
 
@@ -92,29 +92,12 @@ class CTkBO(TKRootBO):
         return [("customtkinter", name) for name in imports]
 
 
-_builder_uid = f"{_plugin_uid}.CTk"
 register_widget(
-    _builder_uid,
+    nsctk.CTk,
     CTkBO,
     "CTk",
-    ("ttk", _designer_tab_label),
-    group=-1,
-)
-
-_maxsize_help = _("Set the maximum window size.")
-_minsize_help = _("Set the minimum window size.")
-
-register_custom_property(
-    _builder_uid,
-    "minsize",
-    "whentry",
-    help=_minsize_help,
-)
-register_custom_property(
-    _builder_uid,
-    "maxsize",
-    "whentry",
-    help=_maxsize_help,
+    _designer_tabs,
+    group=GROOT,
 )
 
 
@@ -153,24 +136,10 @@ class CTkToplevelBO(TKToplevelBO):
         return [("customtkinter", self.class_.__name__)]
 
 
-_builder_uid = f"{_plugin_uid}.CTkToplevel"
 register_widget(
-    _builder_uid,
+    nsctk.CTkToplevel,
     CTkToplevelBO,
     "CTkToplevel",
-    ("ttk", _designer_tab_label),
-    group=-1,
-)
-
-register_custom_property(
-    _builder_uid,
-    "minsize",
-    "whentry",
-    help=_minsize_help,
-)
-register_custom_property(
-    _builder_uid,
-    "maxsize",
-    "whentry",
-    help=_maxsize_help,
+    _designer_tabs,
+    group=GROOT,
 )

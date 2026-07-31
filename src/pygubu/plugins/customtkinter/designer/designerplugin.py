@@ -1,3 +1,4 @@
+import pygubu.plugins.customtkinter.designer.properties
 from pygubu.api.v1 import IPluginBase, IDesignerPlugin
 from pygubu.utils.widget import crop_widget
 from pygubu.stockimage import StockRegistry, StockImageCache, StockImage
@@ -8,20 +9,23 @@ from .preview import (
     CTkTabviewForPreviewBO,
     CTkSegmentedButtonForPreviewBO,
 )
-from ..ctkbase import _plugin_uid
+from .._config import namespace
+
+
+namespace_prefix = f"{namespace}."
 
 
 class CTkDesignerPlugin(IDesignerPlugin):
     def get_preview_builder(self, builder_uid: str):
-        if builder_uid == f"{_plugin_uid}.CTkToplevel":
+        if builder_uid == "customtkinter.CTkToplevel":
             return CTkToplevelPreviewBO
-        if builder_uid == f"{_plugin_uid}.CTk":
+        if builder_uid == "customtkinter.CTk":
             return CTkPreviewBO
-        if builder_uid == f"{_plugin_uid}.CTkFrame":
+        if builder_uid == "customtkinter.CTkFrame":
             return CTkFramePreviewBO
-        if builder_uid == f"{_plugin_uid}.CTkTabview":
+        if builder_uid == "customtkinter.CTkTabview":
             return CTkTabviewForPreviewBO
-        if builder_uid == f"{_plugin_uid}.CTkSegmentedButton":
+        if builder_uid == "customtkinter.CTkSegmentedButton":
             return CTkSegmentedButtonForPreviewBO
         return None
 
@@ -43,7 +47,7 @@ class CTkDesignerPlugin(IDesignerPlugin):
     def configure_for_preview(self, builder_uid: str, widget):
         """Make widget just display with minimal functionality."""
 
-        if not builder_uid.startswith(f"{_plugin_uid}."):
+        if not builder_uid.startswith(namespace_prefix):
             return
 
         #

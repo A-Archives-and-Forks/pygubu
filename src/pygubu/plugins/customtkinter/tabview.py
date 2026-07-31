@@ -3,9 +3,8 @@ from pygubu.api.v1 import (
     register_widget,
     register_custom_property,
 )
-from pygubu.i18n import _
-from ..customtkinter import _designer_tab_label, _plugin_uid
-from .ctkbase import CTkBaseMixin, GCONTAINER
+from ._config import _designer_tabs, nsctk, GCONTAINER
+from .ctkbase import CTkBaseMixin
 
 from customtkinter import CTkTabview
 
@@ -36,12 +35,11 @@ class CTkTabviewBO(CTkBaseMixin, BuilderObject):
     command_properties = ("command",)
 
 
-_builder_uid = f"{_plugin_uid}.CTkTabview"
 register_widget(
-    _builder_uid,
+    nsctk.CTkTabview,
     CTkTabviewBO,
     "CTkTabview",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GCONTAINER,
 )
 
@@ -52,7 +50,7 @@ class CTkTabviewTabBO(BuilderObject):
     container_layout = True
     layout_required = False
     allow_bindings = False
-    allowed_parents = (f"{_plugin_uid}.CTkTabview",)
+    allowed_parents = (nsctk.CTkTabview,)
     properties = ("label",)
 
     def _get_tab_name(self):
@@ -80,17 +78,25 @@ class CTkTabviewTabBO(BuilderObject):
         return tuple()
 
 
-_builder_uid = f"{_plugin_uid}.CTkTabview.Tab"
-
-CTkTabviewBO.add_allowed_child(_builder_uid)
-
+CTkTabviewBO.add_allowed_child(nsctk.CTkTabviewTab)
 register_widget(
-    _builder_uid,
+    nsctk.CTkTabviewTab,
     CTkTabviewTabBO,
     "CTkTabview.Tab",
-    ("ttk", _designer_tab_label),
+    _designer_tabs,
     group=GCONTAINER,
 )
 
-_help = _("The 'name' argument of method: CTkTabview.add(self, name: str)")
-register_custom_property(_builder_uid, "label", "entry", help=_help)
+# I'm renaming Tab UID from
+# customtkinter.CTkTabview.Tab to customtkinter.CTkTabviewTab
+# so, maintain backward compatibility:
+
+CTkTabviewBO.add_allowed_child(nsctk.OldCTkTabview.Tab)
+register_widget(
+    nsctk.OldCTkTabview.Tab,
+    CTkTabviewTabBO,
+    "CTkTabview.Tab",
+    _designer_tabs,
+    group=GCONTAINER,
+    public=False,
+)
