@@ -78,19 +78,14 @@ plugin_properties = dict(
     dropdown_hover_color=dict(buid=_builder_all, **color_editor),
     dropdown_text_color=dict(buid=_builder_all, **color_editor),
     dropdown_fg_color=dict(buid=_builder_all, **color_editor),
-    fg_color=dict(buid=_builder_all, heop=_ctk_fg_color_help, **color_editor),
+    fg_color=dict(buid=_builder_all, help=_ctk_fg_color_help, **color_editor),
     hover_color=dict(buid=_builder_all, **color_editor),
     placeholder_text_color=dict(buid=_builder_all, **color_editor),
     progress_color=dict(buid=_builder_all, **color_editor),
-    segmented_button_fg_color=dict(buid=_builder_all, **color_editor),
-    segmented_button_selected_color=dict(buid=_builder_all, **color_editor),
-    segmented_button_selected_hover_color=dict(
-        buid=_builder_all, **color_editor
-    ),
-    segmented_button_unselected_color=dict(buid=_builder_all, **color_editor),
-    segmented_button_unselected_hover_color=dict(
-        buid=_builder_all, **color_editor
-    ),
+    selected_color=dict(buid=_builder_all, **color_editor),
+    selected_hover_color=dict(buid=_builder_all, **color_editor),
+    unselected_color=dict(buid=_builder_all, **color_editor),
+    unselected_hover_color=dict(buid=_builder_all, **color_editor),
     text_color=dict(buid=_builder_all, **color_editor),
     text_color_disabled=dict(buid=_builder_all, **color_editor),
     scrollbar_button_color=dict(buid=_builder_all, **color_editor),

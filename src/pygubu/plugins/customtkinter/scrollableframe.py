@@ -26,7 +26,7 @@ class CTkScrollableFrameBO(CTkBaseMixin, BuilderObject):
         "border_color",
         "scrollbar_fg_color",
         "scrollbar_button_color",
-        "scrollbar_button_hover_color:",
+        "scrollbar_button_hover_color",
         "label_fg_color",
         "label_text_color",
         "label_text",
