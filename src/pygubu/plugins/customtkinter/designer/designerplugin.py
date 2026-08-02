@@ -89,7 +89,7 @@ class CTkDesignerPlugin(IDesignerPlugin):
 
     def ensure_visibility_in_preview(self, builder, selected_uid: str):
         """Ensure visibility of selected_uid in preview."""
-        xpath = ".//object[@class='customtkinter.CTkTabview.Tab']"
+        xpath = ".//object[@class='customtkinter.CTkTabviewTab']"
         # find all tabs
         tabs = builder.uidefinition.root.findall(xpath)
         if tabs is None:
