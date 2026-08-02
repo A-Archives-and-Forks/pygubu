@@ -1,6 +1,10 @@
 History
 =======
 
+Changes for version 0.41.1
+
+  * Customtkinter: fix Tabview visibility in designer preview. Fix property names.
+
 Changes for version 0.41
 
   * property_registry: Allow to copy a property when builder_id is using wildcard. fixes #308
