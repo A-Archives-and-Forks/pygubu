@@ -86,6 +86,15 @@ plugin_properties = dict(
     selected_hover_color=dict(buid=_builder_all, **color_editor),
     unselected_color=dict(buid=_builder_all, **color_editor),
     unselected_hover_color=dict(buid=_builder_all, **color_editor),
+    segmented_button_fg_color=dict(buid=_builder_all, **color_editor),
+    segmented_button_selected_color=dict(buid=_builder_all, **color_editor),
+    segmented_button_selected_hover_color=dict(
+        buid=_builder_all, **color_editor
+    ),
+    segmented_button_unselected_color=dict(buid=_builder_all, **color_editor),
+    segmented_button_unselected_hover_color=dict(
+        buid=_builder_all, **color_editor
+    ),
     text_color=dict(buid=_builder_all, **color_editor),
     text_color_disabled=dict(buid=_builder_all, **color_editor),
     scrollbar_button_color=dict(buid=_builder_all, **color_editor),
