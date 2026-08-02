@@ -1,7 +1,7 @@
 History
 =======
 
-Changes for version 0.41.1
+Changes for version 0.41.2
 
   * Customtkinter: fix Tabview visibility in designer preview. Fix property names.
 
