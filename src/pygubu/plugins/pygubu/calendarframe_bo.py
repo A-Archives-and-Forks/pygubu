@@ -5,12 +5,12 @@ from pygubu.api.v1 import (
     register_custom_property,
 )
 from pygubu.plugins.ttk.ttkstdwidgets import TTKFrame
-from pygubu.widgets.calendarframe import CalendarFrame
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GDISPLAY
+from pygubu.widgets.calendarframe import CalendarView, CalendarFrame
+from ._config import nspygubu, _section_widgets, GDISPLAY
 
 
-class CalendarFrameBuilder(BuilderObject):
-    class_ = CalendarFrame
+class CalendarViewBO(BuilderObject):
+    class_ = CalendarView
     OPTIONS_STANDARD = TTKFrame.OPTIONS_STANDARD
     OPTIONS_SPECIFIC = TTKFrame.OPTIONS_SPECIFIC
     OPTIONS_CUSTOM = (
@@ -30,17 +30,32 @@ class CalendarFrameBuilder(BuilderObject):
     )
     ro_properties = TTKFrame.ro_properties
     properties = OPTIONS_STANDARD + OPTIONS_SPECIFIC + OPTIONS_CUSTOM
-    virtual_events = ("<<CalendarFrameDateSelected>>",)
+    virtual_events = (CalendarView.EVENT_DATE_SELECTED,)
 
 
 register_widget(
-    nspygubu.widgets.CalendarFrame,
-    CalendarFrameBuilder,
-    "CalendarFrame",
-    _designer_tabs_widgets_ttk,
+    nspygubu.widgets.CalendarView,
+    CalendarViewBO,
+    "CalendarView",
+    _section_widgets,
     group=GDISPLAY,
+)
+
+
+class CalendarFrameBO(CalendarViewBO):
+    virtual_events = (CalendarFrame.EVENT_DATE_SELECTED,)
+
+
+# Register deprecated name until removal
+register_widget(
+    nspygubu.widgets.CalendarFrame,
+    CalendarFrameBO,
+    "CalendarFrame",
+    _section_widgets,
+    group=GDISPLAY,
+    public=False,
 )
 # Register old name until removal
 register_widget(
-    nspygubu.builder_old.calendarframe, CalendarFrameBuilder, public=False
+    nspygubu.builder_old.calendarframe, CalendarFrameBO, public=False
 )

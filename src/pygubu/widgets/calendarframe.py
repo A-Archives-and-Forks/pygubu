@@ -1,5 +1,5 @@
 # encoding: utf-8
-__all__ = ["CalendarFrame"]
+__all__ = ["CalendarView", "CalendarFrame"]
 
 import calendar
 import locale
@@ -49,7 +49,7 @@ def matrix_coords(rows, cols, rowh, colw, ox=0, oy=0):
         yield (i, x, y, x1, y1)
 
 
-class CalendarFrame(ttk.Frame):
+class CalendarView(ttk.Frame):
     """Allows to choose a date in a calendar.
 
     WIDGET-SPECIFIC OPTIONS
@@ -59,11 +59,12 @@ class CalendarFrame(ttk.Frame):
             selectbg, selectfg,
             markbg, markfg
     Generates:
-        <<CalendarFrameDateSelected>>
+        <<CalendarView:DateSelected>>
     """
 
     datetime = calendar.datetime.datetime
     timedelta = calendar.datetime.timedelta
+    EVENT_DATE_SELECTED = "<<CalendarView:DateSelected>>"
 
     def __init__(self, master=None, **kw):
         self.__redraw_cb = None  # For redraw callback check.
@@ -142,8 +143,7 @@ class CalendarFrame(ttk.Frame):
                 color_change = True
         self._handle_state(kw)
 
- 
-        calendar_change =self._handle_locale(kw)
+        calendar_change = self._handle_locale(kw)
         calendar_change = self._handle_firstweekday(kw)
 
         date_change = False
@@ -558,7 +558,13 @@ class CalendarFrame(ttk.Frame):
         self._reconfigure_date()
         self._selection = (year, month, day)
         self._call_mark_days()
-        self.event_generate("<<CalendarFrameDateSelected>>")
+        self.event_generate(self.EVENT_DATE_SELECTED)
+
+
+class CalendarFrame(CalendarView):
+    """For backwards compatibility only."""
+
+    EVENT_DATE_SELECTED = "<<CalendarFrameDateSelected>>"
 
 
 if __name__ == "__main__":
@@ -566,7 +572,7 @@ if __name__ == "__main__":
 
     locale.setlocale(locale.LC_ALL, locale.getdefaultlocale())
     root = tk.Tk()
-    c = CalendarFrame(root)
+    c = CalendarView(root)
     c.grid()
 
     # select day
