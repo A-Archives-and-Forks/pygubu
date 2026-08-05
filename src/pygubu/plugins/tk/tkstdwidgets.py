@@ -12,6 +12,12 @@ from pygubu.component.builderobject import (
     OptionMenuBaseMixin,
     WmMixin,
 )
+from pygubu.plugins import (
+    GROOT,
+    GCONTAINER,
+    GDISPLAY,
+    GINPUT,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -20,15 +26,10 @@ _section_ttk = "ttk"
 _section_containers = _("Containers")
 _section_controls = _("Control & Display")
 _section_menu = _("Menu")
-_section_helpers = _("Pygubu Helpers")
 
 #
 # tkinter widgets
 #
-GROOT = 100
-GCONTAINER = 200
-GDISPLAY = 300
-GINPUT = 400
 
 has_tk_version_9 = tk.TkVersion >= 9
 
@@ -1509,7 +1510,7 @@ register_widget(
     "tk.PanedWindow.Pane",
     TKPanedWindowPane,
     "tk.PanedWindow.Pane",
-    (_section_containers, _section_helpers, _section_tk),
+    (_section_containers, _section_tk),
     group=GCONTAINER,
 )
 
@@ -1554,9 +1555,9 @@ class TKLabelwidgetBO(BuilderObject):
 register_widget(
     "pygubu.builder.widgets.Labelwidget",
     TKLabelwidgetBO,
-    "Labelwidget",
-    (_section_helpers, _section_tk, _section_ttk),
-    group=GDISPLAY,
+    "ttk.Labelframe.Labelwidget",
+    (_section_ttk, _section_containers),
+    group=GCONTAINER,
 )
 
 
@@ -1600,8 +1601,8 @@ class ToplevelMenuHelperBO(BuilderObject):
 register_widget(
     "pygubu.builder.widgets.toplevelmenu",
     ToplevelMenuHelperBO,
-    "ToplevelMenu",
-    (_section_menu, _section_helpers, _section_tk, _section_ttk),
+    "tk.Toplevel.MenuHelper",
+    (_section_menu, _section_tk, _section_ttk),
     group=GCONTAINER,
 )
 

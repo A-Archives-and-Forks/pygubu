@@ -12,12 +12,12 @@ from pygubu.component.builderobject import (
     OptionMenuBaseMixin,
     CB_TYPES,
 )
-
-
-GROOT = 100
-GCONTAINER = 200
-GDISPLAY = 300
-GINPUT = 400
+from pygubu.plugins import (
+    GROOT,
+    GCONTAINER,
+    GDISPLAY,
+    GINPUT,
+)
 
 has_tk_version_9 = tk.TkVersion >= 9
 
@@ -25,7 +25,6 @@ _section_ttk = "ttk"
 _section_containers = _("Containers")
 _section_controls = _("Control & Display")
 _section_menu = _("Menu")
-_section_helpers = _("Pygubu Helpers")
 
 
 #
@@ -589,7 +588,7 @@ register_widget(
     "ttk.Panedwindow.Pane",
     TTKPanedwindowPane,
     "ttk.Panedwindow.Pane",
-    (_section_containers, _section_helpers, _section_ttk),
+    (_section_containers, _section_ttk),
     group=GCONTAINER,
 )
 
@@ -661,7 +660,7 @@ register_widget(
     "ttk.Notebook.Tab",
     TTKNotebookTab,
     "ttk.Notebook.Tab",
-    (_section_containers, _section_helpers, _section_ttk),
+    (_section_containers, _section_ttk),
     group=GCONTAINER,
 )
 
@@ -789,7 +788,7 @@ register_widget(
     "ttk.Treeview.Column",
     TTKTreeviewColumnBO,
     "ttk.Treeview.Column",
-    (_section_controls, _section_helpers, _section_ttk),
+    (_section_controls, _section_ttk),
     group=GDISPLAY,
 )
 

@@ -7,7 +7,7 @@ from pygubu.api.v1 import (
 )
 
 import pygubu.widgets.dockfw.widgets as widgets
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GCONTAINER
+from ._config import nspygubu, _section_containers, GCONTAINER
 
 
 class DockWidgetBaseBO(BuilderObject):
@@ -40,7 +40,7 @@ register_widget(
     nspygubu.widgets.dockframe,
     DockFrameBO,
     "DockFrame",
-    _designer_tabs_widgets_ttk,
+    _section_containers,
     group=GCONTAINER,
 )
 
@@ -118,8 +118,8 @@ DockPaneBO.add_allowed_child(nspygubu.widgets.dockpane)
 register_widget(
     nspygubu.widgets.dockpane,
     DockPaneBO,
-    "DockPane",
-    _designer_tabs_widgets_ttk,
+    "DockFrame.Pane",
+    _section_containers,
     group=GCONTAINER,
 )
 
@@ -198,7 +198,7 @@ DockPaneBO.add_allowed_child(nspygubu.widgets.dockwidget)
 register_widget(
     nspygubu.widgets.dockwidget,
     DockWidgetBO,
-    "DockWidget",
-    _designer_tabs_widgets_ttk,
+    "DockFrame.Widget",
+    _section_containers,
     group=GCONTAINER,
 )

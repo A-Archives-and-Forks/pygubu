@@ -1,20 +1,24 @@
 from pygubu.utils.namespace import walkns, SN
 from pygubu.i18n import _
+from pygubu.plugins import (
+    GROOT,
+    GCONTAINER,
+    GDISPLAY,
+    GINPUT,
+)
 
-_tab_widgets_label = _("Pygubu Widgets")
-_tab_helpers_label = _("Pygubu Helpers")
-_tab_form_widgets_label = _("Pygubu Forms")
-_designer_tabs_widgets_tk = ("tt", _tab_widgets_label)
-_designer_tabs_widgets_ttk = ("ttk", _tab_widgets_label)
-_designer_tabs_helpers_tk = ("tk", _tab_helpers_label)
-_designer_tabs_helpers_ttk = ("ttk", _tab_helpers_label)
-_designer_tabs_forms = ("ttk", _tab_form_widgets_label)
+_section_label_containers = _("Pygubu Containers")
+_section_label_widgets = _("Pygubu Control & Display")
+_section_label_helpers = _("Pygubu Helpers")
+_section_label_forms = _("Pygubu Forms")
 
-# used for group ordering in designer.
-GROOT: int = 100
-GCONTAINER: int = 200
-GDISPLAY: int = 300
-GINPUT: int = 400
+_section_containers = ("ttk", _section_label_containers)
+_section_containers_tk = ("tk", _section_label_containers)
+_section_widgets = ("ttk", _section_label_widgets)
+_section_widgets_tk = ("tt", _section_label_widgets)
+_section_helpers_tk = ("tk", _section_label_helpers)
+_section_helpers_ttk = ("ttk", _section_label_helpers)
+_section_forms = ("ttk", _section_label_forms)
 
 namespace = "pygubu"
 
@@ -79,6 +83,9 @@ ns_pygubu = SN(
         scrolledframe=1,
         tkscrollbarhelper=1,
         tkscrolledframe=1,
+        tkinterscrolledtext=1,
+        Labelwidget=1,
+        toplevelmenu=1,
     ),
 )
 

@@ -12,7 +12,7 @@ from pygubu.i18n import _
 from pygubu.plugins.pygubu.tkscrollbarhelper_bo import TKSBHelperBO
 from pygubu.plugins.pygubu._config import (
     nspygubu,
-    _designer_tabs_forms as _designer_tabs,
+    _section_forms,
     GINPUT,
 )
 from .base import WidgetBOMixin
@@ -30,7 +30,7 @@ register_widget(
     _tk_text_builder_uid,
     TextBO,
     "Text",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )
 

@@ -4,7 +4,7 @@ from pygubu.api.v1 import (
 )
 from pygubu.widgets.simpletooltip import Tooltip, Tooltipttk
 from pygubu.component.builderobject import FamilyType
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GDISPLAY
+from ._config import nspygubu, _section_widgets, GDISPLAY
 
 
 class TooltipBaseBO(BuilderObject):
@@ -41,7 +41,8 @@ register_widget(
     nspygubu.widgets.Tooltip,
     SimpleTooltipBO,
     "Tooltip",
-    _designer_tabs_widgets_ttk,
+    _section_widgets,
+    group=GDISPLAY,
 )
 
 
@@ -64,6 +65,6 @@ register_widget(
     nspygubu.widgets.Tooltipttk,
     SimpleTooltipttkBO,
     "Tooltipttk",
-    _designer_tabs_widgets_ttk,
+    _section_widgets,
     group=GDISPLAY,
 )

@@ -13,6 +13,7 @@ _pathchoser_all_old = f"{nspygubu.builder_old}.pathchooser.*"
 plugin_properties = dict(
     calendarfg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -20,6 +21,7 @@ plugin_properties = dict(
     ),
     calendarbg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -65,6 +67,7 @@ plugin_properties = dict(
     ],
     firstweekday=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -82,6 +85,7 @@ plugin_properties = dict(
     ),
     headerbg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -89,6 +93,7 @@ plugin_properties = dict(
     ),
     headerfg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -146,6 +151,7 @@ plugin_properties = dict(
     label=dict(buid=nspygubu.widgets.AccordionFrameGroup),
     linewidth=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -157,6 +163,7 @@ plugin_properties = dict(
     mask=dict(buid=nspygubu.widgets.Floodgauge),
     markbg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -164,6 +171,7 @@ plugin_properties = dict(
     ),
     markfg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -192,6 +200,7 @@ plugin_properties = dict(
     ],
     month=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -230,6 +239,7 @@ plugin_properties = dict(
     ),
     selectbg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -237,6 +247,7 @@ plugin_properties = dict(
     ),
     selectfg=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],
@@ -255,6 +266,7 @@ plugin_properties = dict(
     state=[
         dict(
             buid=[
+                nspygubu.widgets.CalendarView,
                 nspygubu.widgets.CalendarFrame,
                 nspygubu.builder_old.calendarframe,
             ],
@@ -395,6 +407,7 @@ plugin_properties = dict(
     ),
     year=dict(
         buid=[
+            nspygubu.widgets.CalendarView,
             nspygubu.widgets.CalendarFrame,
             nspygubu.builder_old.calendarframe,
         ],

@@ -6,7 +6,7 @@ from pygubu.api.v1 import (
 )
 from pygubu.widgets.floodgauge import Floodgauge
 from pygubu.plugins.ttk.ttkstdwidgets import TTKProgressbar
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GINPUT
+from ._config import nspygubu, _section_widgets, GINPUT
 
 #
 # Builder definition section
@@ -22,6 +22,6 @@ register_widget(
     nspygubu.widgets.Floodgauge,
     FloodgaugeBO,
     "Floodgauge",
-    _designer_tabs_widgets_ttk,
+    _section_widgets,
     group=GINPUT,
 )

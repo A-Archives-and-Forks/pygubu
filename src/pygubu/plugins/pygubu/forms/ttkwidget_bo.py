@@ -10,7 +10,7 @@ from pygubu.api.v1 import (
 from pygubu.plugins.pygubu.scrollbarhelper_bo import TTKSBHelperBO
 from pygubu.plugins.pygubu._config import (
     nspygubu,
-    _designer_tabs_forms as _designer_tabs,
+    _section_forms,
     GCONTAINER,
     GDISPLAY,
     GINPUT,
@@ -32,7 +32,7 @@ register_widget(
     nspygubu.forms.ttkwidget.FrameFormBuilder,
     FrameFormBuilderBO,
     "FrameFormBuilder",
-    _designer_tabs,
+    _section_forms,
     group=GCONTAINER,
 )
 
@@ -47,7 +47,7 @@ register_widget(
     nspygubu.forms.ttkwidget.Entry,
     EntryBO,
     "Entry",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )
 
@@ -62,7 +62,7 @@ register_widget(
     nspygubu.forms.ttkwidget.LabelWidgetInfo,
     LabelWidgetInfoBO,
     "LabelWidgetInfo",
-    _designer_tabs,
+    _section_forms,
     group=GDISPLAY,
 )
 
@@ -77,7 +77,7 @@ register_widget(
     nspygubu.forms.ttkwidget.Label,
     LabelBO,
     "Label",
-    _designer_tabs,
+    _section_forms,
     group=GDISPLAY,
 )
 
@@ -94,7 +94,7 @@ register_widget(
     nspygubu.forms.ttkwidget.Checkbutton,
     CheckbuttonBO,
     "Checkbutton",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )
 
@@ -111,6 +111,6 @@ register_widget(
     nspygubu.forms.ttkwidget.Combobox,
     ComboboxBO,
     "Combobox",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )

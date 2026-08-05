@@ -6,7 +6,7 @@ from pygubu.api.v1 import (
 )
 from pygubu.plugins.ttk.ttkstdwidgets import TTKFrame
 from pygubu.widgets.accordionframe import AccordionFrame
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GCONTAINER
+from ._config import nspygubu, _section_containers, GCONTAINER
 
 
 class AccordionFrameBO(TTKFrame):
@@ -22,7 +22,7 @@ register_widget(
     nspygubu.widgets.AccordionFrame,
     AccordionFrameBO,
     "AccordionFrame",
-    _designer_tabs_widgets_ttk,
+    _section_containers,
     group=GCONTAINER,
 )
 
@@ -92,6 +92,6 @@ register_widget(
     nspygubu.widgets.AccordionFrameGroup,
     AccordionFrameGroupBO,
     "AccordionFrame.Group",
-    _designer_tabs_widgets_ttk,
+    _section_containers,
     group=GCONTAINER,
 )

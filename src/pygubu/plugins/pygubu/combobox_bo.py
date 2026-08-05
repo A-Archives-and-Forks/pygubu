@@ -2,7 +2,7 @@
 from pygubu.api.v1 import register_widget
 from pygubu.plugins.ttk.ttkstdwidgets import TTKCombobox
 from pygubu.widgets.combobox import Combobox
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GINPUT
+from ._config import nspygubu, _section_widgets, GINPUT
 
 
 class ComboboxBO(TTKCombobox):
@@ -26,7 +26,7 @@ register_widget(
     nspygubu.widgets.Combobox,
     ComboboxBO,
     "Combobox",
-    _designer_tabs_widgets_ttk,
+    _section_widgets,
     group=GINPUT,
 )
 

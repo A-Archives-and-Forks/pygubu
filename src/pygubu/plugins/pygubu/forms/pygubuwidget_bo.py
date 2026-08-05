@@ -12,7 +12,7 @@ from pygubu.api.v1 import (
 )
 from pygubu.plugins.pygubu._config import (
     nspygubu,
-    _designer_tabs_forms as _designer_tabs,
+    _section_forms,
     GINPUT,
 )
 from .base import WidgetBOMixin
@@ -30,7 +30,7 @@ register_widget(
     nspygubu.forms.pygubuwidget.PygubuCombobox,
     PygubuComboboxBO,
     "PygubuCombobox",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )
 
@@ -47,7 +47,7 @@ register_widget(
     nspygubu.forms.pygubuwidget.FontInput,
     FontInputFWBO,
     "FontInput",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )
 
@@ -64,6 +64,6 @@ register_widget(
     nspygubu.forms.pygubuwidget.ColorInput,
     ColorInputFWBO,
     "ColorInput",
-    _designer_tabs,
+    _section_forms,
     group=GINPUT,
 )

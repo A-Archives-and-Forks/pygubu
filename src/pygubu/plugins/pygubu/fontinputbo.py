@@ -7,7 +7,7 @@ from pygubu.api.v1 import (
 )
 
 from pygubu.widgets.fontinput import FontInput
-from ._config import nspygubu, _designer_tabs_widgets_ttk, GINPUT
+from ._config import nspygubu, _section_widgets, GINPUT
 
 
 #
@@ -24,6 +24,6 @@ register_widget(
     nspygubu.widgets.FontInput,
     FontInputBO,
     "FontInput",
-    _designer_tabs_widgets_ttk,
+    _section_widgets,
     group=GINPUT,
 )
